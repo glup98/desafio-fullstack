@@ -1,14 +1,16 @@
-package com.ejemplo.desafio.domain.model;
+package com.previred.users_app.domain.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
-public class User {
+public class User extends Base {
 
     private Long rut;
     private String dv;
     private String nombres;
     private String apellidos;
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private String correoElectronico;
     private String contrasena;
 
@@ -16,7 +18,20 @@ public class User {
     }
 
     public User(Long rut, String dv, String nombres, String apellidos,
-                Date fechaNacimiento, String correoElectronico, String contrasena) {
+                LocalDate fechaNacimiento, String correoElectronico, String contrasena) {
+        this.rut = rut;
+        this.dv = dv;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.fechaNacimiento = fechaNacimiento;
+        this.correoElectronico = correoElectronico;
+        this.contrasena = contrasena;
+    }
+
+    public User(UUID id, LocalDateTime creadoEn, LocalDateTime actualizadoEn,
+                Long rut, String dv, String nombres, String apellidos,
+                LocalDate fechaNacimiento, String correoElectronico, String contrasena) {
+        super(id, creadoEn, actualizadoEn);
         this.rut = rut;
         this.dv = dv;
         this.nombres = nombres;
@@ -58,11 +73,11 @@ public class User {
         this.apellidos = apellidos;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

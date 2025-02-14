@@ -1,19 +1,5 @@
-package com.ejemplo.desafio.domain.repository;
+package com.previred.users_app.domain.repository;
 
-import java.util.List;
-import java.util.Optional;
+import com.previred.users_app.domain.model.User;
 
-import com.ejemplo.desafio.domain.model.User;
-
-public interface UserRepositoryPort {
-
-    User createUser(User user);
-
-    List<User> getAllUsers();
-
-    Optional<User> getUserById(Long rut);
-
-    User updateUser(User user);
-
-    void deleteUserById(Long rut);
-}
+public interface UserRepositoryPort extends BaseRepositoryPort<User, Long>{}
