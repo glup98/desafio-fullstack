@@ -3,6 +3,7 @@ package com.previred.users_app.infrastructure.controller;
 import com.previred.users_app.app.service.UserService;
 import com.previred.users_app.domain.model.User;
 import com.previred.users_app.infrastructure.dto.CreateUserRequestDto;
+import com.previred.users_app.infrastructure.dto.UpdateUserRequestDto;
 import com.previred.users_app.infrastructure.dto.UserResponseDto;
 import com.previred.users_app.infrastructure.exception.ResourceNotFoundException;
 import com.previred.users_app.infrastructure.exception.BadRequestException;
@@ -53,18 +54,17 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseDto> updateUser(
             @PathVariable("id") String id,
-            @Valid @RequestBody User user) {
-
+            @Valid @RequestBody UpdateUserRequestDto requestDto) {
+    
         UUID uuid = validateAndParseUUID(id);
-        
-        if (userService.findById(uuid).isEmpty()) {
-            throw new ResourceNotFoundException("Usuario no encontrado con ID: " + id);
-        }
-
-        user.setId(uuid);
-        User updated = userService.update(user);
-        return ResponseEntity.ok(UserMapper.toResponseDto(updated));
-    }
+        User existingUser = userService.findById(uuid)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con ID: " + id));
+    
+        User updatedUser = UserMapper.updateDomain(existingUser, requestDto);
+        User savedUser = userService.update(updatedUser);
+    
+        return ResponseEntity.ok(UserMapper.toResponseDto(savedUser));
+    }    
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") String id) {
@@ -77,7 +77,7 @@ public class UserController {
         userService.deleteById(uuid);
         return ResponseEntity.noContent().build();
     }
-    
+
     private UUID validateAndParseUUID(String id) {
         try {
             return UUID.fromString(id);
