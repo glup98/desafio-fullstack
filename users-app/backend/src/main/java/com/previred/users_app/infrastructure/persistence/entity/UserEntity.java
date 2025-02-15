@@ -1,44 +1,37 @@
-package com.previred.users_app.domain.model;
+package com.previred.users_app.infrastructure.persistence.entity;
 
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class User extends Base {
+@Entity
+@Table(name = "users")
+public class UserEntity {
+
+    @Id
+    @GeneratedValue
+    private UUID id; 
 
     private Long rut;
     private String dv;
     private String nombres;
     private String apellidos;
+
     private LocalDate fechaNacimiento;
+
     private String correoElectronico;
-    private Password contrasena;
+    private String contrasena;
 
-    public User() {
+    private LocalDateTime creadoEn;
+    private LocalDateTime actualizadoEn;
+
+    public UUID getId() {
+        return id;
     }
 
-    public User(Long rut, String dv, String nombres, String apellidos,
-                LocalDate fechaNacimiento, String correoElectronico, Password contrasena) {
-        this.rut = rut;
-        this.dv = dv;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.fechaNacimiento = fechaNacimiento;
-        this.correoElectronico = correoElectronico;
-        this.contrasena = contrasena;
-    }
-
-    public User(UUID id, LocalDateTime creadoEn, LocalDateTime actualizadoEn,
-                Long rut, String dv, String nombres, String apellidos,
-                LocalDate fechaNacimiento, String correoElectronico, Password contrasena) {
-        super(id, creadoEn, actualizadoEn);
-        this.rut = rut;
-        this.dv = dv;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.fechaNacimiento = fechaNacimiento;
-        this.correoElectronico = correoElectronico;
-        this.contrasena = contrasena;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public Long getRut() {
@@ -89,11 +82,28 @@ public class User extends Base {
         this.correoElectronico = correoElectronico;
     }
 
-    public Password getContrasena() {
+    public String getContrasena() {
         return contrasena;
     }
 
-    public void setContrasena(Password contrasena) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+    public LocalDateTime getCreadoEn() {
+        return creadoEn;
+    }
+
+    public void setCreadoEn(LocalDateTime creadoEn) {
+        this.creadoEn = creadoEn;
+    }
+
+    public LocalDateTime getActualizadoEn() {
+        return actualizadoEn;
+    }
+
+    public void setActualizadoEn(LocalDateTime actualizadoEn) {
+        this.actualizadoEn = actualizadoEn;
+    }
 }
+
