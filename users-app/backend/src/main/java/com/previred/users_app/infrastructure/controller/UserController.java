@@ -2,6 +2,7 @@ package com.previred.users_app.infrastructure.controller;
 
 import com.previred.users_app.app.service.UserService;
 import com.previred.users_app.domain.model.User;
+import com.previred.users_app.infrastructure.docs.UserControllerDocs;
 import com.previred.users_app.infrastructure.dto.CreateUserRequestDto;
 import com.previred.users_app.infrastructure.dto.UpdateUserRequestDto;
 import com.previred.users_app.infrastructure.dto.UserResponseDto;
@@ -18,7 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/users")
-public class UserController {
+public class UserController implements UserControllerDocs {
 
     private final UserService userService;
 
@@ -26,14 +27,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody(required = true) CreateUserRequestDto requestDto) {
+    @Override
+    public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody CreateUserRequestDto requestDto) {
         User user = UserMapper.toDomain(requestDto);
         User createdUser = userService.create(user);
         return ResponseEntity.ok(UserMapper.toResponseDto(createdUser));
     }
 
-    @GetMapping("/{id}")
+    @Override
     public ResponseEntity<UserResponseDto> findUserById(@PathVariable("id") String id) {
         UUID uuid = validateAndParseUUID(id);
         User user = userService.findById(uuid)
@@ -42,7 +43,7 @@ public class UserController {
         return ResponseEntity.ok(UserMapper.toResponseDto(user));
     }
 
-    @GetMapping
+    @Override
     public ResponseEntity<List<UserResponseDto>> getAllUsers() {
         List<UserResponseDto> users = userService.findAll()
                 .stream()
@@ -51,7 +52,7 @@ public class UserController {
         return users.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(users);
     }
 
-    @PutMapping("/{id}")
+    @Override
     public ResponseEntity<UserResponseDto> updateUser(
             @PathVariable("id") String id,
             @Valid @RequestBody UpdateUserRequestDto requestDto) {
@@ -66,7 +67,7 @@ public class UserController {
         return ResponseEntity.ok(UserMapper.toResponseDto(savedUser));
     }    
 
-    @DeleteMapping("/{id}")
+    @Override
     public ResponseEntity<Void> deleteUser(@PathVariable("id") String id) {
         UUID uuid = validateAndParseUUID(id);
 
