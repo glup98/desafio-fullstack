@@ -5,7 +5,7 @@ import com.previred.users_app.domain.model.Password;
 import com.previred.users_app.infrastructure.dto.CreateUserRequestDto;
 import com.previred.users_app.infrastructure.dto.UserResponseDto;
 
-import java.time.LocalDate;
+// import java.time.LocalDate;
 
 public class UserMapper {
 
@@ -18,7 +18,7 @@ public class UserMapper {
                 dto.getDv(),
                 dto.getNombres(),
                 dto.getApellidos(),
-                LocalDate.parse(dto.getFechaNacimiento()),
+                dto.getFechaNacimiento(),
                 dto.getCorreoElectronico(),
                 Password.fromPlainText(dto.getContrasena())
         );
