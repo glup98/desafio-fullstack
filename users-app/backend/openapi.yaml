@@ -7,56 +7,56 @@ info:
     url: https://opensource.org/licenses/MIT
   version: "1.0"
 servers:
-- url: http://localhost:8080
-  description: Generated server url
+  - url: http://localhost:8080
+    description: Generated server url
 tags:
-- name: Usuarios
-  description: CRUD de usuarios
+  - name: Usuarios
+    description: CRUD de usuarios
 paths:
   /api/v1/users/{id}:
     get:
       tags:
-      - Usuarios
+        - Usuarios
       summary: Obtener un usuario por ID
       description: Busca un usuario por su UUID.
       operationId: findUserById
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "400":
           description: ID no válido
           content:
-            '*/*':
+            "*/*":
               schema:
                 $ref: "#/components/schemas/UserResponseDto"
         "200":
           description: Usuario encontrado
           content:
-            '*/*':
+            "*/*":
               schema:
                 $ref: "#/components/schemas/UserResponseDto"
         "404":
           description: Usuario no encontrado
           content:
-            '*/*':
+            "*/*":
               schema:
                 $ref: "#/components/schemas/UserResponseDto"
     put:
       tags:
-      - Usuarios
+        - Usuarios
       summary: Actualizar un usuario
       description: Modifica los datos de un usuario existente.
       operationId: updateUser
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -67,33 +67,33 @@ paths:
         "400":
           description: ID no válido
           content:
-            '*/*':
+            "*/*":
               schema:
                 $ref: "#/components/schemas/UserResponseDto"
         "200":
           description: Usuario actualizado
           content:
-            '*/*':
+            "*/*":
               schema:
                 $ref: "#/components/schemas/UserResponseDto"
         "404":
           description: Usuario no encontrado
           content:
-            '*/*':
+            "*/*":
               schema:
                 $ref: "#/components/schemas/UserResponseDto"
     delete:
       tags:
-      - Usuarios
+        - Usuarios
       summary: Eliminar un usuario
       description: Elimina un usuario por su ID.
       operationId: deleteUser
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "400":
           description: ID no válido
@@ -104,7 +104,7 @@ paths:
   /api/v1/users:
     get:
       tags:
-      - Usuarios
+        - Usuarios
       summary: Obtener todos los usuarios
       description: Devuelve la lista de todos los usuarios registrados.
       operationId: getAllUsers
@@ -112,7 +112,7 @@ paths:
         "204":
           description: No hay usuarios registrados
           content:
-            '*/*':
+            "*/*":
               schema:
                 type: array
                 items:
@@ -120,12 +120,12 @@ paths:
         "200":
           description: Lista de usuarios
           content:
-            '*/*':
+            "*/*":
               schema:
                 $ref: "#/components/schemas/UserResponseDto"
     post:
       tags:
-      - Usuarios
+        - Usuarios
       summary: Crear un usuario
       description: Registra un nuevo usuario en el sistema.
       operationId: createUser
@@ -139,13 +139,13 @@ paths:
         "200":
           description: Usuario creado exitosamente
           content:
-            '*/*':
+            "*/*":
               schema:
                 $ref: "#/components/schemas/UserResponseDto"
         "400":
           description: Error en la solicitud
           content:
-            '*/*':
+            "*/*":
               schema:
                 $ref: "#/components/schemas/UserResponseDto"
 components:
@@ -174,7 +174,7 @@ components:
           maxLength: 2147483647
           minLength: 8
       required:
-      - contrasena
+        - contrasena
     UserResponseDto:
       type: object
       properties:
@@ -222,8 +222,8 @@ components:
           maxLength: 2147483647
           minLength: 8
       required:
-      - apellidos
-      - contrasena
-      - correoElectronico
-      - fechaNacimiento
-      - nombres
+        - apellidos
+        - contrasena
+        - correoElectronico
+        - fechaNacimiento
+        - nombres
