@@ -1,1 +1,1 @@
-export { DataTable, columns } from './table';
+export { UserDataTable, columns } from './table';

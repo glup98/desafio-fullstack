@@ -1,2 +1,2 @@
 export { columns } from './columns';
-export { DataTable } from './DataTable';
+export { UserDataTable } from './UserDataTable';

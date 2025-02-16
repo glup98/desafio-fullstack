@@ -2,9 +2,10 @@ export interface User {
   id: string;
   nombres: string;
   apellidos: string;
-  rut: number;
+  rut: string;
   fechaNacimiento: string;
   correoElectronico: string;
+  contrasena: string;
   creadoEn?: string;
   actualizadoEn?: string;
 }

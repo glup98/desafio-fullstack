@@ -1,15 +1,20 @@
+import { Pencil } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Pencil } from 'lucide-react';
+import { UserForm } from '../forms';
+import { User } from '@/types/User';
 
-export const EditDialog = () => {
+interface UpdateUserDialogProps {
+  user: User;
+}
+
+export const UpdateUserDialog: React.FC<UpdateUserDialogProps> = ({ user }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -20,13 +25,10 @@ export const EditDialog = () => {
       </DialogTrigger>
 
       <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your account and remove your
-            data from our servers.
-          </DialogDescription>
+        <DialogHeader style={{ textAlign: 'center' }}>
+          <DialogTitle>Editar {user.nombres}</DialogTitle>
         </DialogHeader>
+        <UserForm user={user} />
       </DialogContent>
     </Dialog>
   );

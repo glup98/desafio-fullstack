@@ -28,12 +28,11 @@ public class UserService extends BaseCrudService<User, UUID> {
         user.setActualizadoEn(LocalDateTime.now());
         return super.create(user);
     }
-    
-    
 
     @Override
     public User update(User user) {
         user.setActualizadoEn(LocalDateTime.now());
         return super.update(user);
     }
+
 }

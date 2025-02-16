@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UserResponseDto {
     private UUID id;
-    private Long rut;
-    private String dv;
+    private String rut;
     private String nombres;
     private String apellidos;
     private LocalDate fechaNacimiento;

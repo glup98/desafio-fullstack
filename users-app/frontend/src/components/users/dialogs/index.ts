@@ -1,2 +1,2 @@
 export { DeleteDialog } from './DeleteDialog';
-export { EditDialog } from './EditDialog';
+export { UpdateUserDialog } from './UpdateUserDialog';

@@ -1,4 +1,5 @@
-import { columns, DataTable } from '@/components/users';
+import { columns, UserDataTable } from '@/components/users';
+import { CreateUserDialog } from '@/components/users/dialogs/CreateUserDialog';
 import { useUsers } from '@/hooks';
 
 export const Users = () => {
@@ -6,13 +7,17 @@ export const Users = () => {
 
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar usuarios</p>;
-  if (users?.length === 0) return <p>No hay usuarios</p>;
 
   return (
     <div>
       <h1>Lista de Usuarios</h1>
       <div className='container mx-auto py-10'>
-        <DataTable columns={columns} data={users ?? []} />
+        <UserDataTable
+          title='Mantenedor de Usuarios'
+          columns={columns}
+          data={users ?? []}
+          createButton={<CreateUserDialog />}
+        />
       </div>
     </div>
   );

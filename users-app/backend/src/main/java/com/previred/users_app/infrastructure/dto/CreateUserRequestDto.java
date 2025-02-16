@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,12 +16,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateUserRequestDto {
 
-    @NotNull(message = "El RUT es obligatorio.")
-    private Long rut;
-
-    @NotNull(message = "El dígito verificador es obligatorio.")
-    @Size(min = 1, max = 1, message = "El dígito verificador debe tener 1 carácter.")
-    private String dv;
+    @Pattern(regexp = "^\\d{7,8}-[0-9kK]{1}$", message = "Formato de RUT inválido. Debe ser: 12345678-9")
+    private String rut;
 
     @NotNull(message = "El nombre es obligatorio.")
     @Size(min = 2, max = 50, message = "El nombre debe tener entre 2 y 50 caracteres.")

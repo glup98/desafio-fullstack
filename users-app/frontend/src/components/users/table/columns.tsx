@@ -11,8 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 import { User } from '@/types/User';
-import { EditDialog } from '../dialogs';
-import { DeleteDialog } from '../dialogs/DeleteDialog';
+import { UpdateUserDialog, DeleteDialog } from '../dialogs';
 
 export const columns: ColumnDef<User>[] = [
   {
@@ -50,7 +49,7 @@ export const columns: ColumnDef<User>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end' className='space-y-2 p-2'>
             <DropdownMenuItem asChild className='p-0'>
-              <EditDialog />
+              <UpdateUserDialog user={user} />
             </DropdownMenuItem>
             <DropdownMenuItem asChild className='p-0'>
               <DeleteDialog user={user} />
