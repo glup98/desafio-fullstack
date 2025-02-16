@@ -1,7 +1,7 @@
-import axios from "axios";
-import { User } from "../types/User";
+import axios from 'axios';
+import { User } from '../types/User';
 
-const API_URL = "http://localhost:8080/api/v1/users";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1/users';
 
 export const getUsers = async (): Promise<User[]> => {
   const response = await axios.get(API_URL);

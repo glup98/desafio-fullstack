@@ -9,16 +9,6 @@ export const Users = () => {
   if (error) return <p>Error al cargar usuarios</p>;
 
   return (
-<<<<<<< HEAD
-    <div>
-      <h1>Lista de Usuarios</h1>
-      <div className='container mx-auto py-10'>
-        <UserDataTable
-          title='Mantenedor de Usuarios'
-          columns={columns}
-          data={users ?? []}
-          createButton={<CreateUserDialog />}
-=======
     <div className='container mx-auto py-10'>
       <div className='flex justify-center mb-6'>
         <img
@@ -27,9 +17,15 @@ export const Users = () => {
           width={200}
           height={60}
           className='object-contain'
->>>>>>> b20ec18 (feat(users-app) se añade logo de previred)
         />
       </div>
+
+      <UserDataTable
+        title='Mantenedor de Usuarios'
+        columns={columns}
+        data={users ?? []}
+        createButton={<CreateUserDialog />}
+      />
     </div>
   );
 };
