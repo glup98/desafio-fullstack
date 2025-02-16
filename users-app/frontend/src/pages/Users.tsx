@@ -9,6 +9,7 @@ export const Users = () => {
   if (error) return <p>Error al cargar usuarios</p>;
 
   return (
+<<<<<<< HEAD
     <div>
       <h1>Lista de Usuarios</h1>
       <div className='container mx-auto py-10'>
@@ -17,6 +18,16 @@ export const Users = () => {
           columns={columns}
           data={users ?? []}
           createButton={<CreateUserDialog />}
+=======
+    <div className='container mx-auto py-10'>
+      <div className='flex justify-center mb-6'>
+        <img
+          src='/previred-logo.png'
+          alt='Previred Logo'
+          width={200}
+          height={60}
+          className='object-contain'
+>>>>>>> b20ec18 (feat(users-app) se añade logo de previred)
         />
       </div>
     </div>
