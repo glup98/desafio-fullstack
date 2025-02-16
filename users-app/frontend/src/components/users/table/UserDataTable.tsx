@@ -12,7 +12,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-import { RankingInfo, rankItem, compareItems } from '@tanstack/match-sorter-utils';
+import { RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
   Table,
   TableBody,
