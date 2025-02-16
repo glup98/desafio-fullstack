@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController implements UserControllerDocs {
@@ -56,16 +57,16 @@ public class UserController implements UserControllerDocs {
     public ResponseEntity<UserResponseDto> updateUser(
             @PathVariable("id") String id,
             @Valid @RequestBody UpdateUserRequestDto requestDto) {
-    
+
         UUID uuid = validateAndParseUUID(id);
         User existingUser = userService.findById(uuid)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con ID: " + id));
-    
+
         User updatedUser = UserMapper.updateDomain(existingUser, requestDto);
         User savedUser = userService.update(updatedUser);
-    
+
         return ResponseEntity.ok(UserMapper.toResponseDto(savedUser));
-    }    
+    }
 
     @Override
     public ResponseEntity<Void> deleteUser(@PathVariable("id") String id) {
