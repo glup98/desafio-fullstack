@@ -13,7 +13,7 @@ export const CreateUserDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant='secondary' className='flex items-center justify-center w-full space-x-2 '>
+        <Button variant='highlight' className='flex items-center justify-center w-full space-x-2 '>
           <Plus className='h-4 w-4' />
           <p className='text-sm'>Nuevo Usuario</p>
         </Button>

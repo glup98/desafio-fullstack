@@ -73,8 +73,8 @@ export function UserDataTable<TData, TValue>({
   });
 
   return (
-    <div className='rounded-md border shadow'>
-      <div className='flex justify-between items-center p-4 border-b'>
+    <div className='rounded-md border shadow '>
+      <div className='flex justify-between items-center p-4 border-b bg-accent text-accent-foreground'>
         <h2 className='text-lg font-semibold'>{title}</h2>
 
         <div className='flex-1 flex justify-center'>
@@ -136,9 +136,9 @@ export function UserDataTable<TData, TValue>({
       </Table>
 
       {data.length > 10 && (
-        <div className='flex justify-end p-4 bg-gray-100 space-x-2'>
+        <div className='flex justify-end p-4 space-x-2 bg-accent text-accent-foreground rounded-b-md'>
           <Button
-            variant='outline'
+            variant='highlight'
             size='sm'
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
@@ -146,7 +146,7 @@ export function UserDataTable<TData, TValue>({
             <ChevronLeft className='h-4 w-4' />
           </Button>
           <Button
-            variant='outline'
+            variant='highlight'
             size='sm'
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}

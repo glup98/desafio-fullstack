@@ -193,7 +193,11 @@ export const UserForm = ({ user }: UserFormProps) => {
             )}
 
             {/* Botón de Enviar */}
-            <Button type='submit' disabled={mutationCreate.isPending || mutationUpdate.isPending}>
+            <Button
+              variant='highlight'
+              type='submit'
+              disabled={mutationCreate.isPending || mutationUpdate.isPending}
+            >
               {user?.id
                 ? mutationUpdate.isPending
                   ? 'Actualizando...'
