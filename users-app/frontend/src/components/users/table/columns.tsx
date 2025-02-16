@@ -1,5 +1,4 @@
-import { MoreHorizontal } from 'lucide-react';
-
+import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ColumnDef } from '@tanstack/react-table';
 
@@ -16,23 +15,48 @@ import { UpdateUserDialog, DeleteDialog } from '../dialogs';
 export const columns: ColumnDef<User>[] = [
   {
     accessorKey: 'nombres',
-    header: 'Nombres',
+    header: ({ column }) => (
+      <Button variant='ghost' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+        Nombres
+        <ArrowUpDown className='ml-2 h-4 w-4' />
+      </Button>
+    ),
   },
   {
     accessorKey: 'apellidos',
-    header: 'Apellidos',
+    header: ({ column }) => (
+      <Button variant='ghost' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+        Apellidos
+        <ArrowUpDown className='ml-2 h-4 w-4' />
+      </Button>
+    ),
   },
   {
     accessorKey: 'rut',
-    header: 'rut',
+    header: ({ column }) => (
+      <Button variant='ghost' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+        RUT
+        <ArrowUpDown className='ml-2 h-4 w-4' />
+      </Button>
+    ),
   },
   {
     accessorKey: 'fechaNacimiento',
-    header: 'Fecha de nacimiento',
+    header: ({ column }) => (
+      <Button variant='ghost' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+        Fecha de Nacimiento
+        <ArrowUpDown className='ml-2 h-4 w-4' />
+      </Button>
+    ),
   },
   {
     accessorKey: 'correoElectronico',
-    header: 'Correo electrónico',
+    header: ({ column }) => (
+      <Button variant='ghost' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+        Correo Electrónico
+        <ArrowUpDown className='ml-2 h-4 w-4' />
+      </Button>
+    ),
   },
   {
     id: 'actions',
