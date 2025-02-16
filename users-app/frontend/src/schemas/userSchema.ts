@@ -5,12 +5,9 @@ export const userSchema = z.object({
 
   apellidos: z.string().min(3, { message: 'El apellido debe tener al menos 3 caracteres.' }),
 
-  rut: z
-    .string()
-    .min(3, { message: 'El RUT debe tener al menos 3 caracteres.' })
-    .regex(/^\d+-[0-9kK]$/, {
-      message: 'El RUT debe tener el formato correcto, por ejemplo: 12345678-9',
-    }),
+  rut: z.string().regex(/^\d{7,8}-[0-9kK]$/, {
+    message: 'Formato de RUT inválido. Debe ser: 12345678-9',
+  }),
 
   fechaNacimiento: z.string().refine(
     (value) => {

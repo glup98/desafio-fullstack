@@ -20,6 +20,8 @@ import { userSchema } from '@/schemas';
 import { useUsers } from '@/hooks';
 import { User } from '@/types/User';
 import { SuccessMessage } from '@/components/utils';
+import { CalendarCustomCaption } from './CalendarCustomCaption';
+import { es } from 'date-fns/locale';
 
 interface UserFormProps {
   user?: User;
@@ -132,7 +134,7 @@ export const UserForm = ({ user }: UserFormProps) => {
                           }`}
                         >
                           {field.value ? (
-                            format(field.value, 'PPP')
+                            format(new Date(field.value), 'PPP', { locale: es })
                           ) : (
                             <span>Selecciona una fecha</span>
                           )}
@@ -147,6 +149,12 @@ export const UserForm = ({ user }: UserFormProps) => {
                         onSelect={(date) => field.onChange(date?.toISOString())}
                         disabled={(date) => date > new Date() || date < new Date('1900-01-01')}
                         initialFocus
+                        components={{
+                          Caption: CalendarCustomCaption,
+                        }}
+                        fromYear={1900}
+                        toYear={new Date().getFullYear()}
+                        locale={es}
                       />
                     </PopoverContent>
                   </Popover>
